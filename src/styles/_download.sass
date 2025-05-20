@@ -1,0 +1,74 @@
+@use "variables"
+@use "mixins"
+
+.download
+  +mixins.flex-column-center
+  row-gap: 3rem
+  width: 100%
+  padding: 8rem 0
+  &__info
+    +mixins.flex-column-center
+    width: 60%
+    text-align: center
+    row-gap: 1rem
+  &__cards
+    width: 75%
+    +mixins.flex-row-center
+    align-items: flex-start
+    column-gap: 1.5rem
+    &__card
+      flex-grow: 1
+      +mixins.flex-column-center
+      row-gap: .5rem
+      box-shadow: 0rem 0.6rem 0.6rem 0.1rem rgba(0, 0, 0, 0.15)
+      border-radius: 0.6rem
+      padding: 1.2rem
+      margin-top: calc(#{'var(--stagger-index)'} * 20px)
+      &__logo
+        width: 70px
+        height: 70px
+        margin: 1rem 0
+        img
+          width: 100%
+          height: 100%
+      h4
+        font-weight: 500
+        color: variables.$color-dark-blue
+      &__dots
+        margin: .4rem 0
+        img
+          width: 100%
+      p
+        font-size: .75rem
+        color: variables.$color-gray
+      button
+        padding: .8rem 1rem 
+        width: 100%
+        font-size: 0.75rem
+        font-weight: 500
+        border-radius: 0.35rem
+        background-color: variables.$color-light-blue
+        color: white
+        box-shadow: 0rem 0.3rem 0.3rem 0rem rgba(0, 0, 0, 0.15)
+        transition: all .1s ease
+        border: 2px solid rgba(0, 0, 0, 0)
+        cursor: pointer
+        &:hover
+          background-color: transparent
+          border: 2px solid variables.$color-light-blue
+          color: variables.$color-light-blue
+          
+// -----------------------
+// Responsive styles
+// -----------------------
+
+@media all and (max-width: variables.$breakpoint-two)
+  .download
+    &__info
+      width: 100%
+    &__cards
+      width: 100%
+      +mixins.flex-column-center
+      row-gap: 2rem
+      &__card
+        margin-top: 0

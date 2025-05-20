@@ -1,0 +1,90 @@
+@use "variables"
+@use "mixins"
+
+.overview
+  +mixins.flex-row-center
+  flex-direction: row-reverse
+  justify-content: space-between
+  row-gap: 2rem
+  padding: 3rem 0
+  &__image
+    position: relative
+    width: 50%
+    transform: translateX(20%)
+    img
+      position: relative
+      width: 100%
+      height: 100%
+  &__image::before
+    position: absolute
+    content: ""
+    width: 500%
+    height: 80%
+    background-color: variables.$color-light-blue
+    bottom: 0
+    left: 0
+    margin-left: 20%
+    border-radius: 9999px 0 0 9999px
+  &__content
+    width: 40%
+    +mixins.flex-column-center
+    align-items: flex-start
+    row-gap: 1.8rem
+    color: variables.$color-dark-blue
+    h2
+      text-transform: capitalize
+      color: variables.$color-dark-blue
+    p
+      padding: 0 0.5rem
+      color: variables.$color-gray
+  &__buttons
+    +mixins.flex-row-center
+    column-gap: 1rem
+  &__button
+    padding: .8rem 1rem
+    font-size: 0.8rem
+    border-radius: 0.35rem
+    font-weight: 500
+    background-color: rgba(0, 0, 0, 0.1)
+    color: rgba(0, 0, 0, 0.65)
+    box-shadow: 0rem 0.3rem 0.3rem 0rem rgba(0, 0, 0, 0.15)
+    transition: all .1s ease
+    border: 2px solid rgba(0, 0, 0, 0)
+    cursor: pointer
+    &:hover
+      background-color: transparent
+      border: 2px solid rgba(0, 0, 0, 0.65)
+  &__button--blue
+    background-color: variables.$color-light-blue
+    color: white
+    &:hover
+      background-color: transparent
+      border: 2px solid variables.$color-light-blue
+      color: variables.$color-light-blue
+
+// -----------------------
+// Responsive styles
+// -----------------------
+
+@media all and (max-width: variables.$breakpoint-two)
+  .overview
+    +mixins.flex-column-center
+    row-gap: 2rem
+    padding: 0 0 5rem 0
+    margin: 1rem 0
+    width: 100%
+    &__image
+      width: 100%
+      transform: translateX(0)
+    &__content
+      width: 100%
+      h2
+        text-align: center
+      p
+        text-align: center
+    &__buttons
+      width: 100%
+    &__button
+      width: 50%
+      padding: .8rem
+      font-size: .7rem

@@ -1,0 +1,52 @@
+@use './index' as *
+@use "variables"
+// Import Rubik font family (400, 500)
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap')
+
+// Quick css reset
+* 
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+
+// General styles across multiple sections
+html
+  font-size: 18px
+  font-family: 'Rubik', sans-serif
+  overflow-x: hidden
+body
+  overflow-x: hidden
+  h2
+    color: variables.$color-dark-blue
+    font-size: variables.$h2-desktop
+  h3
+    color: variables.$color-dark-blue
+    font-size: variables.$h3-desktop
+  p
+    color: variables.$color-gray
+    line-height: 1.6rem
+  button
+   font-family: inherit
+
+.wrapper
+  overflow-x: hidden
+
+.container
+  max-width: variables.$container-width
+  margin: 0 auto;
+  display: flex
+  flex-direction: column
+  align-items: center
+
+// -----------------------
+// Responsive styles
+// -----------------------
+
+@media all and (max-width: variables.$breakpoint-two)
+  body
+    h2
+      font-size: variables.$h2-mobile
+    h3
+      font-size: variables.$h3-mobile
+  .container
+    width: 80%

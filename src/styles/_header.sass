@@ -1,0 +1,125 @@
+@use "mixins"
+@use "variables"
+
+header
+  width: 80%
+  padding: 2.5rem 0
+  max-width: variables.$container-width
+  margin: 0 auto
+  display: flex
+  justify-content: space-between
+  align-items: center
+  .header__logo
+    height: 25px
+    cursor: pointer
+    img
+      height: 100%
+      width: 100%
+  .header__hamburger
+    display: none
+    outline: none
+    background: transparent
+    border: none
+    cursor: pointer
+  .header__links
+    +mixins.flex-row-center
+    column-gap: 2rem
+    font-size: 0.65rem
+    &__link
+      text-transform: uppercase
+      color: variables.$color-dark-blue
+      letter-spacing: 0.07rem
+      cursor: pointer
+      text-decoration: none
+      transition: all .1s ease
+      &:hover
+        color: variables.$color-light-red
+    &__link--login
+      background-color: variables.$color-light-red
+      color: rgba(255, 255, 255, .85)
+      padding: 0.5rem 1.2rem
+      cursor: pointer
+      font-weight: 500
+      border-radius: 0.2rem
+      box-shadow: 0rem 0.3rem 0.3rem 0rem rgba(0, 0, 0, 0.15)
+      border: 2px solid variables.$color-light-red
+      &:hover
+        background-color: #fff
+        border: 2px solid variables.$color-light-red
+
+
+// -----------------------
+// Responsive styles
+// -----------------------
+
+@media all and (max-width: variables.$breakpoint-two)
+  header
+    padding: 3rem 0.6rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    .header__mobile-menu
+      width: 100vw
+      height: 100vh
+      position: fixed
+      top: 0
+      left: 0
+      background-color: variables.$color-dark-blue
+      opacity: .97
+      z-index: 10
+      +mixins.flex-column-center
+      justify-content: flex-start
+      row-gap: 2rem
+      &__top
+        width: 80%
+        +mixins.flex-row-center
+        justify-content: space-between
+        padding: 3rem 0.6rem
+        &__logo
+          svg
+            circle
+              fill: #fff
+            path:first-child
+              fill: #fff
+            path:nth-child(2)
+              fill: variables.$color-dark-blue
+        &__close
+          +mixins.flex-row-center
+          outline: none
+          background: transparent
+          border: none
+          cursor: pointer
+          color: #fff
+      &__links
+        +mixins.flex-column-center
+        width: 100%
+        padding: 0 2rem
+        &__link
+          +mixins.flex-row-center
+          width: 100%
+          text-transform: uppercase
+          text-decoration: none
+          color: #fff
+          border-bottom: 1px solid rgba(255, 255, 255, .2)
+          padding: 1.5rem 0
+          &:first-child
+            border-top: 1px solid rgba(255, 255, 255, .2)
+        &__link--login
+          border: 2px solid #fff
+          padding: .6rem 0
+          border-radius: .3rem
+          margin-top: 1.2rem
+    .header__logo
+      height: 25px
+      cursor: pointer
+      img
+        height: 100%
+        width: 100%
+    .header__links
+      display: none
+    .header__hamburger
+      display: block
+
+// @media all and (min-width: 376px ) and (max-width: 1439px)
+//   header
+//     width: 100%

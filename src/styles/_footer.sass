@@ -1,0 +1,73 @@
+@use 'mixins'
+@use 'variables'
+
+footer
+  width: 100%
+  +mixins.flex-row-center
+  background-color: variables.$color-dark-blue
+  .footer__wrapper
+    +mixins.flex-row-center
+    width: 100%
+    max-width: variables.$container-width
+    column-gap: 2rem
+    padding: 1.4rem 0
+    &__logo
+      +mixins.flex-row-center
+      height: 25px
+      cursor: pointer
+      svg
+        path
+          fill: #fff
+    &__links-container
+      +mixins.flex-row-center
+      column-gap: 2rem
+      font-size: 0.65rem
+      &__link
+        text-transform: uppercase
+        letter-spacing: 0.07rem
+        cursor: pointer
+        text-decoration: none
+        transition: all .1s ease
+        color: #fff
+        &:hover
+          color: variables.$color-light-red
+    &__social-links-container
+      +mixins.flex-row-center
+      column-gap: 1.6rem
+      margin-left: auto
+      &__link
+        color: white
+        +mixins.flex-row-center
+        svg
+          transition: all .1s ease
+          fill: white
+        svg:hover
+          fill: variables.$color-light-red
+
+// -----------------------
+// Responsive styles
+// -----------------------
+
+@media all and (max-width: variables.$breakpoint-two)
+  footer
+    .footer__wrapper
+      +mixins.flex-column-center
+      row-gap: 2rem
+      .footer__wrapper__links-container
+        +mixins.flex-column-center
+        row-gap: 1.6rem
+        &__link
+          width: 100%
+          border: none
+          background-color: transparent
+          text-transform: uppercase
+          color: rgba(255, 255, 255, 0.9)
+          letter-spacing: 0.1rem
+          cursor: pointer
+          text-align: center
+      .footer__wrapper__social-links-container
+        +mixins.flex-row-center
+        column-gap: 1.6rem
+        margin-left: 0
+        &__link
+          color: white

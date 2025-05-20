@@ -1,0 +1,133 @@
+@use "variables"
+@use "mixins"
+
+.features
+  +mixins.flex-column-center
+  padding: 3rem 0
+  row-gap: 1rem
+  &__container
+    width: 100%
+    +mixins.flex-column-center
+    row-gap: 1.4rem
+    h3
+      color: variables.$color-dark-blue
+    p
+      width: 45%
+      text-align: center
+      padding: 0 0.5rem
+      color: variables.$color-gray
+    ul
+      list-style: none
+      +mixins.flex-row-center
+      width: 65%
+      font-size: 0.9rem
+      padding: 2rem 0
+      li
+        +mixins.flex-row-center
+        width: 100%
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+        cursor: pointer
+        transition-duration: 0.3s
+        div
+          position: relative
+          padding: 1rem
+          text-transform: capitalize
+          color: variables.$color-gray
+          width: 100%
+          text-align: center
+          &::before
+            content: ""
+            position: absolute
+            bottom: 0
+            height: 3px
+            width: 0%
+            left: 50%
+            transition: width 300ms, left 300ms
+            background-color: variables.$color-light-red
+          &.active::before
+            width: 100%
+            left: 0
+          &.active
+            color: variables.$color-dark-blue
+  &__category-extended
+    display: flex
+    column-gap: 5rem
+    width: 100%
+    &__image
+      display: flex
+      justify-content: flex-end
+      position: relative
+      height: 340px
+      min-width: 50%
+      img
+        position: relative
+        height: 100%
+    &__image::before
+      position: absolute
+      content: ""
+      width: 500%
+      height: 80%
+      background-color: variables.$color-light-blue
+      bottom: 0
+      right: 0
+      margin-right: 20%
+      transform: translateY(25%)
+      border-radius: 0 9999px 9999px 0
+    &__details
+      flex-grow: 1
+      +mixins.flex-column-center
+      align-items: flex-start
+      row-gap: 1rem
+      h3
+        color: variables.$color-dark-blue
+        text-align: left
+      p
+        color: variables.$color-gray
+      button
+        padding: .8rem 1.3rem 
+        font-size: 0.8rem
+        border-radius: 0.35rem
+        font-weight: 500
+        background-color: variables.$color-light-blue
+        color: #fff
+        box-shadow: 0rem 0.3rem 0.3rem 0rem rgba(0, 0, 0, 0.15)
+        border: 2px solid rgba(0, 0, 0, 0)
+        cursor: pointer
+
+// -----------------------
+// Responsive styles
+// -----------------------
+
+@media all and (max-width: variables.$breakpoint-two)
+  .features
+    padding: 0
+    p
+      padding: 0
+      width: 100%
+    ul
+      list-style: none
+      +mixins.flex-column-center
+      width: 100%
+      padding: 1rem 0
+      li:first-child
+        border-top: 1px solid rgba(0, 0, 0, 0.15)
+    &__category-extended
+      padding: 1rem 0
+      +mixins.flex-column-center
+      row-gap: 5rem
+      &__image
+        width: 100%
+        height: auto
+        img
+          width: 100%
+      &__details
+        align-items: center
+      h3
+        width: 100%
+        text-align: center
+      p
+        text-align: center
+        padding: 0 0.5rem
+        color: variables.$color-gray
+      button
+        display: none
