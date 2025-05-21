@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { ReactComponent as Arrow } from "../assets/images/icon-arrow.svg";
 import { ArrowIcon } from "./ArrowIcon";
 
 const faq = [
@@ -28,6 +27,8 @@ const Faq = () => {
     if (list) {
       list.classList.toggle("show");
       arrow.classList.toggle("active");
+      console.log("active question", activeQuestion);
+      console.log("text", text);
       if (activeQuestion === text) setActiveQuestion(null);
       else setActiveQuestion(text);
     }
@@ -45,18 +46,20 @@ const Faq = () => {
         {faq.map((question, i) => (
           <li key={i} className="faq__questions__question" onClick={handleQuestionDropdown}>
             <div className="faq__questions__question__container">
-              <p>{question.question}</p>
+              <p className={question.question === activeQuestion ? "text-active" : ""}>{question.question}</p>
               <div className="faq__questions__question__container__arrow">
                 <ArrowIcon />
               </div>
             </div>
             <ul ref={listRef}>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, explicabo. Quia cum dolorum soluta odit
-                quos accusantium consectetur cumque deleniti corrupti. Consequatur deleniti reprehenderit nostrum
-                necessitatibus dolores obcaecati sequi recusandae. Totam, dolor dicta! Dolores iste in voluptatum
-                adipisci sunt reiciendis voluptas alias quos perspiciatis est, reprehenderit labore odit!
-              </p>
+              <div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, explicabo. Quia cum dolorum soluta odit
+                  quos accusantium consectetur cumque deleniti corrupti. Consequatur deleniti reprehenderit nostrum
+                  necessitatibus dolores obcaecati sequi recusandae. Totam, dolor dicta! Dolores iste in voluptatum
+                  adipisci sunt reiciendis voluptas alias quos perspiciatis est, reprehenderit labore odit!
+                </p>
+              </div>
             </ul>
           </li>
         ))}

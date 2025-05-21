@@ -24,11 +24,15 @@
         justify-content: space-between
         align-items: center
         cursor: pointer
-        &:hover>p
-          color: variables.$color-light-red
+        &:hover > p
+          +mixins.on-hover 
+            color: variables.$color-light-red
         p
           transition: .1s all ease
           color: variables.$color-dark-blue
+          font-size: .85rem
+        p.text-active
+          color: variables.$color-light-red
         &__arrow
           +mixins.flex-row-center
           svg
@@ -45,10 +49,13 @@
         border-bottom: 1px solid rgba(0, 0, 0, .15)
         &.show
           grid-template-rows: 1fr
-        > p
+        div
           overflow: hidden
-          padding: 0.6rem 0
           font-size: .85rem
+          > p
+            overflow: hidden
+            padding: .6rem 0
+            font-size: .85rem
   button
     padding: .8rem 1rem 
     font-size: 0.75rem
